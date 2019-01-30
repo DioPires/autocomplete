@@ -7,7 +7,7 @@ class Trie {
         val wordNorm = word.toLowerCase()
 
         for (letter in wordNorm) {
-            val id = Character.toString(letter.toLowerCase())
+            val id = letter.toLowerCase().toString()
             if (id in curNode.children.keys) curNode = curNode.children[id]!!
             else {
                 isFinished = false
@@ -18,7 +18,7 @@ class Trie {
         if (!isFinished) {
             var id: String
             for (letter in wordNorm) {
-                id = Character.toString(letter)
+                id = letter.toString()
                 curNode.addChild(id)
                 curNode = curNode.children[id]!!
             }
@@ -41,7 +41,7 @@ class Trie {
 
         for (word in result) {
             val aux = word.split(prefix, ignoreCase = true).last()
-            if (aux.isNotEmpty()) resultOut["nextChars"]!!.add(Character.toString(aux[0]))
+            if (aux.isNotEmpty()) resultOut["nextChars"]!!.add(aux[0].toString())
         }
         return resultOut
     }
