@@ -1,5 +1,5 @@
 class Trie {
-    private var head = Node(null, null)
+    private var head = Node()
 
     private fun addWord(word: String) {
         var curNode = head
@@ -19,8 +19,9 @@ class Trie {
             var id: String
             for (letter in wordNorm) {
                 id = letter.toString()
-                curNode.addChild(id)
-                curNode = curNode.children[id]!!
+                val child = Node(id, null)
+                curNode.addChild(child, id)
+                curNode = child
             }
         }
         curNode.id = wordNorm
